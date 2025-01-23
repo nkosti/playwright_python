@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "playwright_python"
+version = "0.1.0"
+description = ""
+authors = ["Nazarii Kostiv <barzimon@gmail.com>"]
+readme = "README.md"
+packages = [{include = "playwright_python"}]
+
+[tool.poetry.dependencies]
+pandas = "^2.0.2"
+python = "^3.8"
+playwright = "^1.45.0"
+pytest-playwright = "^0.3.0"
+pytest-bdd = "^6.1.1"
+pytest = "^7.2.2"
+pytest-xdist = "^3.2.1"
+allure-pytest-bdd = "^2.13.1"
+slugify = "^0.0.1"
+pytest-check = "^2.2.0"
+cryptography = "^41.0.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.pytest.ini_options]
+minversion = 6.0
+addopts = "-ra -q --cucumber-json=test.json --tracing=retain-on-failure"
+testpaths = "test/"
+python_files = "step_*.py"
+markers = [
+    'f1-test',
+    'f2-test',
+    'regression',
+    'smoke'
+]
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+
+filterwarnings = [    "error",    "ignore::_pytest.warning_types.PytestUnknownMarkWarning"]
+
+[tool.flake8]
+extend-ignore = "E203"
+exclude = ".git,__pycache__,venv"
+max-complexity = 10
