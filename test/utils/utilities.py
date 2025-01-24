@@ -24,6 +24,6 @@ class Utilities:
 
     @staticmethod
     def decrypt_text(text):
-        f = Fernet("GYUwTLgdVdI8FhX2QjahviBSMi-zJy6JADg3zQiRfls=")
+        f = Fernet("tesdfjlksdflkansflas=")
         decrypted_text = f.decrypt(text)
         return decrypted_text.decode("utf-8")
