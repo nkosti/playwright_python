@@ -95,6 +95,12 @@ def log_test_name_at_start(request):
     logging.info("=" * 20 + request.node.nodeid + "=" * 20)
 
 
+@pytest.fixture(autouse=True)
+def login_to_okta(poms, env_data):
+    poms.landing_pom.open_landing_page()
+    poms.okta_authentication.ciam_login()
+
+
 @pytest.fixture
 def poms(page):
     return Context(page)
