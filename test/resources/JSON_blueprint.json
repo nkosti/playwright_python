@@ -1,0 +1,37 @@
+{
+  "Expected": {
+    "expected_message": [
+      ""
+    ],
+    "expected_message_reg_ex": [
+      ""
+    ],
+    "expected_status": [
+      ""
+    ],
+    "expected_text": [
+      ""
+    ],
+    "expected_value": [
+      ""
+    ],
+    "json_file": {
+      "json_file_name_prefix": {
+        "key": "value"
+      },
+      "xml_file": [
+        ""
+      ]
+    },
+    "ManageUser": {
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "phone_no": "123456789",
+      "org_name": "AVITECH",
+      "roles": {
+        "Organization Admin": true
+      }
+    }
+  }
+}

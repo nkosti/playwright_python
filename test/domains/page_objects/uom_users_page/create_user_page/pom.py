@@ -103,3 +103,8 @@ class CreateUserPOM(BasePOM):
 
     def return_org_name_saved_element(self):
         return self.page.locator(self.locators.ORG_NAME_SAVED)
+
+    def create_new_user(self, email: str):
+        self.click_element(self.locators.CREATE_BUTTON)
+        self.type_in_element(self.locators.NEW_USER_EMAIL_INPUT, email)
+        self.click_element(self.locators.ADD_USER_BUTTON)

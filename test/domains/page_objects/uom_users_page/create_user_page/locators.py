@@ -20,3 +20,6 @@ class Locators:
     SAVE_UPDATED_USER_BUTTON = "[data-cy='updateUser-button-save']"
     CLOSE_MESSAGE_POPUP_BUTTON = ".ant-notification-notice-close"
     GENERIC_CHECKED_ROLE = ".ant-checkbox:has(input[checked]) + span"
+    CREATE_BUTTON = "[data-cy='user-create-user-modal-link']"
+    NEW_USER_EMAIL_INPUT = "[data-cy='createUserModal-userName']"
+    ADD_USER_BUTTON = "[data-cy='createUserModal-ok']"
