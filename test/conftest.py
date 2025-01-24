@@ -57,7 +57,7 @@ def downloaded_folder():
 
 @pytest.fixture
 def env_data():
-    env_name = os.getenv("ENV_NAME") or "local"
+    env_name = os.getenv("ENV_NAME") or "test"
     return load_env_data(env_name)
 
 
@@ -190,3 +190,11 @@ def pytest_runtest_makereport(item: Item, call):
                     logging.info("Video successfully attached to Allure report.")
             except Exception as e:
                 logging.error(f"Couldn't save video! \n Original exception: {e}")
+
+
+class EnvData:
+    """
+    Store dynamic data, retrievable by API, that is different across environments.
+    """
+    roles = {}
+    orgs = {}
