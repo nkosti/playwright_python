@@ -2,6 +2,7 @@ from playwright.sync_api import Page
 
 from test.domains.api_client.base_api_client import BaseApiClient
 from test.domains.enum.api.filter_endpoints.endpoints import FiltersEndpoint
+from test.domains.enum.api.severity_types import SeverityTypes
 
 
 class FilterApiClient(BaseApiClient):

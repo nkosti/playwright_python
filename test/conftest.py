@@ -15,6 +15,7 @@ from test.domains.api_client.filter_api_client import FilterApiClient
 from test.domains.config.environments_handler import load_env_data
 from test.domains.page_objects.base_pom.base_pom import BasePOM
 from test.domains.page_objects.landing_page.pom import LandingPagePOM
+from test.domains.page_objects.okta_authentication_page.pom import OktaAuthenticationPOM
 from test.domains.page_objects.uom_organizations_page.pom import OrganizationsPOM
 from test.domains.page_objects.uom_users_page.pom import UsersPOM
 from test.domains.test_data.dto.users.users_dto import UserDTO
@@ -31,7 +32,9 @@ class Context:
         self.basePOM = BasePOM(page)
         self.landing_pom = LandingPagePOM(page)
         self.organizations = OrganizationsPOM(page)
+        self.okta_authentication = OktaAuthenticationPOM(page)
         self.users = UsersPOM(page)
+
 
 class ApiContext:
     def __init__(self, page: Page, env_data):

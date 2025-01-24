@@ -2,6 +2,8 @@ import random
 import string
 import uuid
 
+from cryptography.fernet import Fernet
+
 
 class Utilities:
 
@@ -19,3 +21,9 @@ class Utilities:
         return [
             marker.name for marker in request.node.own_markers if "TEST" in marker.name
         ][0]
+
+    @staticmethod
+    def decrypt_text(text):
+        f = Fernet("GYUwTLgdVdI8FhX2QjahviBSMi-zJy6JADg3zQiRfls=")
+        decrypted_text = f.decrypt(text)
+        return decrypted_text.decode("utf-8")

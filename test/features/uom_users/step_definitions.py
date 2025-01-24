@@ -1,6 +1,6 @@
 from playwright.sync_api import expect
 from pytest_bdd import step, parsers
-from test.domains.test_data.dto.uom_users.users_dto import UserDTO
+from test.domains.test_data.dto.users.users_dto import UserDTO
 
 from test.conftest import Context
 from test.domains.enum.users.users import UserFiltersCell

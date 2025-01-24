@@ -21,7 +21,6 @@ def navigate_to_organizations_page(poms: Context):
 
 @step("confirmation message is displayed")
 def confirmation_message_is_displayed(poms: Context, json_data):
-    # failing for SAT-8055 because of the workaround for UOM-2221
     user = poms.users.create_user
     expect(
         user.page.locator(
