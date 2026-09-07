@@ -15,10 +15,6 @@ pytest_html_report.html
 allure-dir
 allure-report
 downloads/
-Dataset_*
-Business-rules-*.csv
-Verify Branch Report*
-Release Branch Report*
 logs_folder/
 
 #Pytest files

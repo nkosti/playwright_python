@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "playwright_python"
 version = "0.1.0"
-description = "A simple Playwright project"
+description = "Playwright + pytest-bdd UI test automation showcase"
 authors = ["Nazarii Kostiv <barzimon@gmail.com>"]
 readme = "README.md"
-packages = [{include = "playwright_python"}]
+package-mode = false
 
 [tool.poetry.dependencies]
 pandas = "^2.0.2"
