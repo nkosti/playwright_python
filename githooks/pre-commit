@@ -1,0 +1,6 @@
+#!/bin/sh
+# Fast sanity gate: make sure the suite still collects before every commit.
+python -m pytest --collect-only -q >/dev/null 2>&1 || {
+    echo "pre-commit: pytest collection failed - fix errors before committing"
+    exit 1
+}
