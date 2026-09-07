@@ -33,7 +33,7 @@ class BaseRestClient:
 
     def authenticate(self):
         payload = (
-            f'grant_type=password&scope=eead_scope&username={self.username}&password={self.password}')
+            f'grant_type=password&scope=api_scope&username={self.username}&password={self.password}')
         headers = {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Basic Og=='}
 
         with self.session as session:
@@ -105,7 +105,7 @@ class UsersAPIClient(BaseRestClient):
     def create_user_from_dto(self, user_info: UserDTO, **kwargs):
         default_payload = {
             "email": user_info.email,
-            "organizationId": "ORGID",  # DOP id
+            "organizationId": "ORGID",  # default org id
             "phoneNumber": user_info.phone_no,
             "firstName": user_info.first_name,
             "lastName": user_info.last_name,
@@ -113,7 +113,7 @@ class UsersAPIClient(BaseRestClient):
         }
 
         # Overwrite payload with extra keyword arguments
-        # todo remove DOP as default org as workaround after UOM-2221 is fixed
+        # todo: remove the default-org workaround once the create-user API accepts a target org directly
         payload = {**default_payload, **kwargs}
         logging.info("CREATING USER")
         logging.info(f"PAYLOAD{payload}")
@@ -141,7 +141,7 @@ class OrganizationsAPIClient(BaseRestClient):
 
     def get_organizations(self):
         payload = {
-            "parentOrgId": "ParentOrgId",  # call with a DOP superuser to get all organizations
+            "parentOrgId": "ParentOrgId",  # call with a superuser to get all organizations
             "includeSubOrganizations": True,
             "paging": {
                 "limit": 100,
@@ -157,7 +157,7 @@ class OrganizationsAPIClient(BaseRestClient):
 
 
 class RolesAPIClient(BaseRestClient):
-    BASE_URL = f"https://uom-uom-api.{ENV_NAME}.com/api/"
+    BASE_URL = f"https://test.{ENV_NAME}.com/api/"
     ROLES_ENDPOINT = urljoin(BASE_URL, "roles/")
     ROLES_LIST_ENDPOINT = urljoin(BASE_URL, "internal/roles/list/")
 

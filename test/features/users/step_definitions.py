@@ -1,10 +1,13 @@
 from playwright.sync_api import expect
+from pytest_bdd import scenarios
 from pytest_bdd import step, parsers
-from test.domains.test_data.dto.users.users_dto import UserDTO
 
 from test.conftest import Context
 from test.domains.enum.users.users import UserFiltersCell
+from test.domains.test_data.dto.users.users_dto import UserDTO
 from test.features.conftest import navigate_to_users_page
+
+scenarios("./.")
 
 
 @step(parsers.parse('"{User}" creates a new active User'))

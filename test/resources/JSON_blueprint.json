@@ -28,7 +28,7 @@
       "last_name": "",
       "email": "",
       "phone_no": "123456789",
-      "org_name": "AVITECH",
+      "org_name": "ACME",
       "roles": {
         "Organization Admin": true
       }

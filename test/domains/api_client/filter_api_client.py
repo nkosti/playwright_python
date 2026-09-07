@@ -9,7 +9,7 @@ class FilterApiClient(BaseApiClient):
     def __init__(self, page: Page, env_data):
         super().__init__(page)
         self.req = page.request
-        self.base_url = env_data["data-branching-service-url"]
+        self.base_url = env_data["filter-service-url"]
         self.headers = {"Content-Type": "multipart/form-data"}
 
     def filter_by(self, filter_by):

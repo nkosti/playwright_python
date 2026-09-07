@@ -8,7 +8,7 @@ from test.utils.utilities import Utilities
 from .locators import Locators
 
 
-class OktaAuthenticationPOM(BasePOM):
+class AuthenticationPOM(BasePOM):
 
     def __init__(self, page: Page):
         super().__init__(page)
@@ -22,7 +22,7 @@ class OktaAuthenticationPOM(BasePOM):
             return env_data[data]
         return None
 
-    def ciam_login(self, credentials=None):
+    def login(self, credentials=None):
         # Set default credentials
         default_username = "iam_username"
         default_password = "iam_password"

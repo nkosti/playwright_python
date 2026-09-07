@@ -2,6 +2,7 @@ import json
 import logging
 import os
 import sys
+import uuid
 
 import allure
 import pytest
@@ -15,9 +16,9 @@ from test.domains.api_client.filter_api_client import FilterApiClient
 from test.domains.config.environments_handler import load_env_data
 from test.domains.page_objects.base_pom.base_pom import BasePOM
 from test.domains.page_objects.landing_page.pom import LandingPagePOM
-from test.domains.page_objects.okta_authentication_page.pom import OktaAuthenticationPOM
-from test.domains.page_objects.uom_organizations_page.pom import OrganizationsPOM
-from test.domains.page_objects.uom_users_page.pom import UsersPOM
+from test.domains.page_objects.authentication_page.pom import AuthenticationPOM
+from test.domains.page_objects.organizations_page.pom import OrganizationsPOM
+from test.domains.page_objects.users_page.pom import UsersPOM
 from test.domains.test_data.dto.users.users_dto import UserDTO
 from test.skipped_tests_config import skipped_tests
 from test.utils.utilities import Utilities
@@ -32,13 +33,13 @@ class Context:
         self.basePOM = BasePOM(page)
         self.landing_pom = LandingPagePOM(page)
         self.organizations = OrganizationsPOM(page)
-        self.okta_authentication = OktaAuthenticationPOM(page)
+        self.authentication = AuthenticationPOM(page)
         self.users = UsersPOM(page)
 
 
 class ApiContext:
     def __init__(self, page: Page, env_data):
-        self.data_branching_api_client = FilterApiClient(page, env_data)
+        self.filter_api_client = FilterApiClient(page, env_data)
 
 
 @pytest.fixture
@@ -71,6 +72,13 @@ def env_data():
 
 
 @pytest.fixture()
+def get_unique_uuid():
+    generated_uuid = uuid.uuid4()
+    formatted_uuid = f"{generated_uuid.hex[:8]}-{generated_uuid.hex[8:12]}-{generated_uuid.hex[12:16]}-{generated_uuid.hex[16:20]}-{generated_uuid.hex[20:]}"
+    return formatted_uuid
+
+
+@pytest.fixture()
 def json_data(request):
     json_file_path = os.path.join(
         "test",
@@ -96,9 +104,14 @@ def log_test_name_at_start(request):
 
 
 @pytest.fixture(autouse=True)
-def login_to_okta(poms, env_data):
-    poms.landing_pom.open_landing_page()
-    poms.okta_authentication.ciam_login()
+def login(poms, env_data):
+    poms.landing_pom.open_login_url()
+    poms.authentication.login()
+
+
+@pytest.fixture(scope="module")
+def module_json_data(request):
+    return request.getfixturevalue("json_data")
 
 
 @pytest.fixture

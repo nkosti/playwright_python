@@ -1,9 +1,9 @@
 class Locators:
-    HOME_BTN = ".nmui-home"
+    HOME_BTN = ".app-home"
     LOGOUT_BTN = "button[data-testid='logout-button']"
-    MENU_BTN = ".nmui-app-launcher"
+    MENU_BTN = ".app-launcher"
     ORGANIZATIONS = "span:text-is('Organizations')"
     SUB_MENU = "li:has-text('{}')"
-    UOM = "a:text-is('Users and Organization Management')"
+    USER_MANAGEMENT = "a:text-is('User Management')"
     USERS = "span:text-is('Users')"
-    USER_PROFILE_BTN = "div.nmui-user-avatar__name"
+    USER_PROFILE_BTN = "div.user-avatar__name"

@@ -9,8 +9,8 @@ class LandingPagePOM(BasePOM):
         super().__init__(page)
         self.locators = Locators()
 
-    def open_landing_page(self):
-        self.page.goto("fe/cmm/parent-app")
+    def open_login_url(self):
+        self.page.goto("/login")
 
     def _open_app(self, app_locator):
         """
@@ -26,15 +26,15 @@ class LandingPagePOM(BasePOM):
     def open_home_page(self):
         self.click_element(self.locators.HOME_BTN)
 
-    def open_uom(self):
-        self._open_app(self.locators.UOM)
+    def open_user_management(self):
+        self._open_app(self.locators.USER_MANAGEMENT)
 
     def open_users(self):
-        self.open_uom()
+        self.open_user_management()
         self.click_element(self.locators.USERS)
 
     def open_organizations(self):
-        self.open_uom()
+        self.open_user_management()
         self.click_element(self.locators.ORGANIZATIONS)
 
     def open_user_profile(self):

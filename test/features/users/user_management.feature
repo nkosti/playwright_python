@@ -1,8 +1,8 @@
-@UOM
+@user_management
 Feature: User Management
 
   @TEST-1
-  Scenario: [TEST-1] Creation of a new User - User not found in CIAM
+  Scenario: [TEST-1] Creation of a new User - User not found in identity provider
     Given "User Admin" navigated to Users page
     When  "User Admin" creates a new active User
     Then  confirmation message is displayed
